@@ -1,0 +1,12 @@
+<main class="py-4" id="grid">
+      <div class="container">
+        <div id="cardsRow" class="row g-4">
+          <!-- Cards gerados pelo JS -->
+        </div>
+
+        <div id="emptyState" class="empty-state mt-4 d-none">
+          <h5 class="fw-bold">Nenhum resultado encontrado</h5>
+          <p class="visually-muted mb-2">Tente limpar a busca, trocar a categoria ou <a href="#" class="link-like" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAdd">adicionar uma nova curiosidade</a>.</p>
+        </div>
+      </div>
+    </main>

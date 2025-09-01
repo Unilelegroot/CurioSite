@@ -1,70 +1,155 @@
 <!DOCTYPE html>
 <html lang="ptbr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🪐CurioSite✨</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand fw-bolt" href="#">Curio<strong>Site</strong></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link" href="#explorar">Explorar</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#como-funciona">Como Funciona👀</a>
-            </li>
-        </ul>
-        </div>
-        <div class="d-flex gap-2">
-        <button type="button" class="btn btn-light">🌙</button>
-        <button type="button" class="btn btn-outline-primary">+ Nova Curiosidade</button>
-        </div>
-    </div>
-    </nav>
-
-
-    <header class="hero d-flex mt-0">
         <div class="container">
-          <div id="left-header-container" class="row g-4 align-items-stretch">
-            <h1>Meu Primeiro Site de Curiosidades</h1>
-            <p class> HTML = estrutura • CSS = visual • JS = comportamento. Sobre Astronomia🪐 e outras Ciências✨</p>
+            <a class="navbar-brand fw-bolt" href="#">Curio<strong>Site</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#explorar">Explorar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#como-funciona">Como Funciona👀</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-light">🌙</button>
+                <button type="button" class="btn btn-outline-primary">+ Nova Curiosidade</button>
+            </div>
         </div>
-        <div id="right-header-container" class="col-lg-5">
-             <div class="p-3 rounded-4" style="background:var(--panel); border:1px solid rgba(124,58,237,.15)">
-            <h3 class="fw-bold mb-3">Como cada parte funciona? 👀</h3>
-            <ul class="mb-0">
-                <li>
-                   <strong>HTML</strong> é o esqueleto: títulos, parágrafos, imagens e links (as "peças").
-                </li>
-                <li>
-                    <strong>CSS</strong> é a roupa: cores, tamanhos, fontes e espaçamentos (o "estilo").
-                </li>
-                <li>
-                    <strong>JavaScript</strong> é o cérebro: cliques, buscas, filtros e contadores (as "ações"). 
-                </li>
-            </ul>             
-            <hr>
-            <p class="mb-1">
-                <strong>Dica de design:</strong> escolha uma paleta com 2–3 cores e use bem o espaço em branco. Títulos curtos, imagens em boa resolução e textos objetivos deixam tudo mais bonito e legível.
-            </p>
-        </div>
-        </div>  
+    </nav>
+    <br>
+    <header class="hero d-flex mt-0">
+        <div class="container row m-auto">
+            <div id="left-header-container" class="col-8">
+                <h1>Meu Primeiro Site de Curiosidades</h1>
+                <p class>A ciência nos ajuda a compreender o universo — das galáxias distantes às menores partículas da
+                    vida. Aqui você vai descobrir curiosidades sobre astronomia🪐 e outras outras áreas da ciência✨.
+                </p>
+
+                <!-- Chips de filtro por categoria -->
+                <div id="chips" class="d-flex flex-wrap gap-2 mb-3">
+                    <!-- Criadas dinamicamente no JS -->
+                </div>
+
+                <!-- Busca e ordenação -->
+                <div class="search-card rounded-4 p-3">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-text">🔎</span>
+                                <input id="searchInput" type="search" class="form-control"
+                                    placeholder="Buscar curiosidades por título, texto ou tag…" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="sortSelect" class="form-select" aria-label="Ordenar resultados">
+                                <option value="recent">Mais recentes</option>
+                                <option value="alpha">A–Z (título)</option>
+                                <option value="likes">Mais curtidas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="right-header-container" class="col-4">
+                <div class="p-3 rounded-4">
+                    <h3 class="fw-bold mb-3">Como o Universo funciona? 🌌</h3>
+                    <ul class="mb-0">
+                        <li>
+                            <strong>A Terra</strong> orbita o Sol 🌞
+                        </li>
+                        <li>
+                            <strong>O Sol</strong> orbita o centro da Via Láctea 🌌
+                        </li>
+                        <li>
+                            <strong>A Via Láctea</strong> viaja em direção à Galáxia de Andrômeda 🌠
+                        </li>
+                        <li>
+                            <strong>Todo o Universo</strong> está em expansão infinita 🚀
+                        </li>
+                    </ul>
+                    <hr>
+                    <p class="mb-1">
+                        <strong>Sabia que </strong>nosso Sol é apenas uma entre bilhões de estrelas na Via Láctea, e que o universo contém trilhões de galáxias? A astronomia nos ajuda a entender o movimento dos planetas e a relação do tempo com a física e a rotação dos corpos celestes. 
+                    </p>
+                </div>
+            </div>
         </div>
     </header>
-    <main>
-        <section id="hero">
+    <br>
+    <!-- <main class="container m-auto">
+        <section id="hero" class="d-flex row container d-flex m-auto">
+            <div class="card mb-3 col-5" style="max-width: 18rem;">
+            <img src="./assets/curiosidade1.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">✨ Olhando para o passado ao ver as estrelas</h5>
+                <p class="card-text">A luz viaja a uma velocidade finita (≈300.000 km/s). Isso significa que, quando vemos uma estrela a 100 anos-luz de distância, estamos vendo como ela era há 100 anos. Observar o céu é, na prática, olhar para diferentes momentos do passado do Universo.</p>
+                <p class="card-text"><small class="text-muted">#astronomia #física</small></p>
+                <button type="button" class="btn btn-outline-dark">♡</button>
+                <button type="button" class="btn btn-outline-dark">Ver Mais</button>
+            </div>
+            </div>
+
+            <div class="card mb-3 col-5" style="max-width: 18rem;">
+            <img src="./assets/curiosidade2.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">☀ O Sol domina o Sistema Solar</h5>
+                <p class="card-text">O Sol concentra 99,86% de toda a massa do Sistema Solar. Todos os planetas, luas, asteroides e cometas juntos representam apenas 0,14%. É essa imensa gravidade que mantém tudo orbitando ao seu redor</p>
+                <p class="card-text"><small class="text-muted">#astronomia #física</small></p>
+                <button type="button" class="btn btn-outline-dark">♡</button>
+                <button type="button" class="btn btn-outline-dark">Ver Mais</button>
+            </div>
+            </div>
+
+            <div class="card mb-3 col-5" style="max-width: 18rem;">
+            <img src="./assets/curiosidade3.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">⚡ O relâmpago mais longo da história</h5>
+                <p class="card-text">Em 2020, a Organização Meteorológica Mundial registrou um relâmpago que percorreu mais de 700 km sobre o sul dos Estados Unidos. Ele se estendeu por estados inteiros, quebrando o recorde mundial anterior e provando que tempestades podem gerar fenômenos muito maiores do que imaginamos.</p>
+                <p class="card-text"><small class="text-muted">#fenômenos #clima</small></p>
+                <button type="button" class="btn btn-outline-dark">♡</button>
+                <button type="button" class="btn btn-outline-dark">Ver Mais</button>
+            </div>
+            </div>
         </section>
+    </main> -->
+    <main class="py-4" id="grid">
+        <div class="container">
+            <div id="cardsRow" class="row g-4">
+                <!-- Cards gerados pelo JS -->
+            </div>
+
+            <div id="emptyState" class="empty-state mt-4 d-none">
+                <h5 class="fw-bold">Nenhum resultado encontrado</h5>
+                <p class="visually-muted mb-2">Tente limpar a busca, trocar a categoria ou <a href="#" class="link-like"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasAdd">adicionar uma nova curiosidade</a>.
+                </p>
+            </div>
+        </div>
     </main>
     <footer>
     </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>
