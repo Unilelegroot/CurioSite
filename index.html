@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🪐CurioSite✨</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
         <div class="container">
             <a class="navbar-brand fw-bolt" href="#">Curio<strong>Site</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -19,7 +22,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#explorar">Explorar</a>
@@ -30,8 +33,8 @@
                 </ul>
             </div>
             <div class="d-flex gap-2">
-                <button type="button" class="btn btn-light">🌙</button>
-                <button type="button" class="btn btn-outline-primary">+ Nova Curiosidade</button>
+                <button id="themeToggle" type="button" class="btn btn-outline-dark" aria-pressed="false" title="Alternar tema">🌙</button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAdd" aria-controls="offcanvasAdd">+ Nova curiosidade</button>
             </div>
         </div>
     </nav>
@@ -40,7 +43,7 @@
         <div class="container row m-auto">
             <div id="left-header-container" class="col-8">
                 <h1>Meu Primeiro Site de Curiosidades</h1>
-                <p class>A ciência nos ajuda a compreender o universo — das galáxias distantes às menores partículas da
+                <p id="cute">A ciência nos ajuda a compreender o universo — das galáxias distantes às menores partículas da
                     vida. Aqui você vai descobrir curiosidades sobre astronomia🪐 e outras outras áreas da ciência✨.
                 </p>
 
@@ -90,7 +93,7 @@
                     </ul>
                     <hr>
                     <p class="mb-1">
-                        <strong>Sabia que </strong>nosso Sol é apenas uma entre bilhões de estrelas na Via Láctea, e que o universo contém trilhões de galáxias? A astronomia nos ajuda a entender o movimento dos planetas e a relação do tempo com a física e a rotação dos corpos celestes. 
+                        <strong>Sabia</strong> que nosso Sol é apenas uma entre bilhões de estrelas na Via Láctea, e que o universo contém trilhões de galáxias? A astronomia nos ajuda a entender o movimento dos planetas e a relação do tempo com a física e a rotação dos corpos celestes. 
                     </p>
                 </div>
             </div>
@@ -147,8 +150,73 @@
             </div>
         </div>
     </main>
-    <footer>
-    </footer>
+      <!-- ==================== OFFCANVAS: NOVA CURIOSIDADE ==================== -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAdd" aria-labelledby="offcanvasAddLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasAddLabel" class="fw-bold">Adicionar nova curiosidade</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form id="formAdd" class="needs-validation" novalidate>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="fldTitle" placeholder="Título" required>
+          <label for="fldTitle">Título</label>
+          <div class="invalid-feedback">Digite um título.</div>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea class="form-control" id="fldText" style="height: 120px" placeholder="Texto da curiosidade" required></textarea>
+          <label for="fldText">Texto da curiosidade</label>
+          <div class="invalid-feedback">Digite um texto curto.</div>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="url" class="form-control" id="fldImage" placeholder="URL da imagem (https://...)" required>
+          <label for="fldImage">URL da imagem (https://…)</label>
+          <div class="invalid-feedback">Forneça um link de imagem válido.</div>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="fldCategory" placeholder="Categoria (ex.: Animes, Animais, Astronomia)" required>
+          <label for="fldCategory">Categoria (ex.: Animes, Animais, Astronomia)</label>
+          <div class="invalid-feedback">Informe uma categoria.</div>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="fldTags" placeholder="Tags separadas por vírgula (ex.: gato, ronronar)" />
+          <label for="fldTags">Tags separadas por vírgula (ex.: gato, ronronar)</label>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-primary" type="submit">Adicionar ao site</button>
+        </div>
+      </form>
+      <p class="small visually-muted mt-3">Dica: use imagens livres (Unsplash, Pexels) e cite a fonte se necessário.</p>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: DETALHES ==================== -->
+  <div class="modal fade" id="modalDetails" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="background:var(--panel)">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Título</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImage" class="img-fluid rounded mb-3" alt="Imagem da curiosidade" />
+          <p id="modalText"></p>
+          <div class="d-flex gap-2 flex-wrap" id="modalTags"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer py-4 mt-4">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p class="mb-0 visually-muted">Feito com HTML, CSS, JS e Bootstrap • Salva preferências no seu navegador (LocalStorage)</p>
+      <a class="link-like" href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Voltar ao topo ↑</a>
+    </div>
+  </footer>
     <script src="script.js"></script>
 </body>
 
